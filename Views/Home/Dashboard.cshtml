@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        @model DashboardViewModel
+        <partial name="HeaderPartial"/>
+
+        <h2>Stats</h2>
+        <div class="stats">
+            <p>Name: @Model.currentUser.FirstName @Model.currentUser.LastName</p>
+            <p>Registration Date: @Model.currentUser.CreatedAt.ToString("MMM d, yyyy")</p>
+        </div>
+        <a href="/CreateShow">Create a TV Party</a>
+
+        <h2>Your Upcoming Events</h2>
+        <div class="table">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>When</th>
+                    <th>Action</th>
+                </tr>
+
+                
+            </table>
+        </div>
+        
+    </body>
+</html>

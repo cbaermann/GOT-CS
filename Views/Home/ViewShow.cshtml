@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    @model ViewShowViewModel
+    <partial name="HeaderPartial"/>
+    <h1>@Model.thisShow.Title</h1>
+    <h4>Genre: @Model.thisShow.Genre</h4>
+    <h4>When: @Model.thisShow.Date.ToString("MMM d, yyyy")</h4>
+    <h4>Location: @Model.thisShow.Location</h4>
+    <h4>@Model.thisShow.ShowId</h4>
+    <h4>@Model.thisUser.UserId</h4>
+
+    <h2>Attendees:</h2>
+    @foreach(var att in Model.thisShow.UserShows)
+    {
+        <p>@att.User.FirstName @att.User.LastName</p>
+    }
+    @{
+        if(Model.thisShow.UserShows.Any(u=>u.UserId == Model.thisUser.UserId))
+        {
+            <a href="/unJoin/@Model.thisShow.ShowId/@Model.thisUser.UserId">Make everyone sad by not showing up</a>
+        }
+        else
+        {
+            <a href="/JoinEvent/@Model.thisShow.ShowId/@Model.thisUser.UserId">Join Event</a>
+        }
+        
+    }
+    <br>
+    @{
+        if(Model.thisShow.Host == Model.thisUser)
+        {
+            <a href="/CancelEvent/@Model.thisShow.ShowId/@Model.thisUser.UserId">Cancel Event</a>
+
+        }
+    }
+
+</body>
+</html>

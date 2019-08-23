@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Show Page</title>
+    </head>
+    <body>
+        @model List<Show>
+        <partial name="HeaderPartial"/>
+        <h1>All Upcoming Events</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>When</th>
+                <th>Action</th>
+            </tr>
+            @foreach(Show show in Model)
+            {
+
+                <tr>
+                    <td>@show.Title</td>
+                    <td>@show.Location</td>
+                    <td>@show.Date.ToString("MMM d, yyyy")</td>
+                    <td><a href="/ViewShow/@show.ShowId">View</a></td>
+                </tr>
+            }
+        </table>
+
+        
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    @model NewShowViewModel
+    <partial name="HeaderPartial"/>
+    <h1>Add an Upcoming Event</h1>
+    <form asp-action="AddShow" asp-controller="Home" method="POST">
+        <span asp-validation-for="newShow.Title"></span>
+        <label asp-for="newShow.Title">Title: </label>
+        <input type="text" asp-for="newShow.Title">
+        <br>
+        <span asp-validation-for="newShow.Genre"></span>
+        <label asp-for="newShow.Genre">Genre: </label>
+        <select asp-for="newShow.Genre">
+            <option value="Fantasy">Fantasy</option>
+            <option value="Horror">Horror</option>
+            <option value="Action">Action</option>
+            <option value="Gore">Gore</option>
+            <option value="Other">Other</option>
+        </select>
+        <br>
+        <span asp-validation-for="newShow.Date"></span>
+        <label asp-for="newShow.Date">Date: </label>
+        <input type="date" asp-for="newShow.Date">
+        <br>
+        <span asp-validation-for="newShow.Location"></span>
+        <label asp-for="newShow.Location">Location: </label>
+        <input type="text" asp-for="newShow.Location">
+        <br>
+        <input type="submit" value="Create Event">
+    </form>
+
+</body>
+</html>
